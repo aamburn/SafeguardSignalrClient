@@ -22,32 +22,29 @@ namespace SafeguardSignalrClient
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length != 3)
+            if (args.Length != 2)
             {
-                Console.WriteLine("Usage: SafeguardSignalrClient [URL] [THUMBPRINT] [EVENT]");
+                Console.WriteLine("Usage: SafeguardSignalrClient [URL] [EVENT]");
                 Environment.Exit(1);
             }
-
+            
+            //extract URL, event name from command line arguments
             string url = args[0];
-            string thumbprint = args[1];
-            string sgEvent = args[2];
+            string sgEvent = args[1];
 
-//          uncomment to use GUI authentication
-//          var connection = LoginWindow.Connect(url);
-
-            var connection = Safeguard.Connect(url, thumbprint, 3,true);
+            //connect to Safeguard and open login prompt window to prompt for creds
+            var connection = LoginWindow.Connect(url);       
             
-            
+            //create listener and connect to signalr. Assign handler function defined below 
+            //to execute when an event is received
             var listener = connection.GetEventListener();
             listener.RegisterEventHandler(sgEvent, Handler);
 
+            //start listener and wait for any input, then stop.
             listener.Start();
-            Console.WriteLine("Listening for AssetUpdated events...\n...\n...\npress CTRL+C to exit at any time");
-
-            while (true)
-            {
-
-            }
+            Console.WriteLine($"Listening for {sgEvent} events...\npress any key to exit");
+            Console.ReadKey();
+            listener.Stop();
         }
 
         private static void Handler(string eventname, string eventbody)
