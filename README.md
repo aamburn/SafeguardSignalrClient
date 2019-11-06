@@ -1,10 +1,9 @@
-Safeguard Signalr Client
-========================
+# Safeguard Signalr Client
 
 This repository is a simple Signalr Client implemented using the Safeguard Dot Net library. 
 
 Usage
-------------------------
+-
 
 Build the solution then run SafeguardSignalrClient.exe. It takes the following parameters: 
 
