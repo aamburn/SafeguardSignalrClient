@@ -9,10 +9,6 @@ Usage
 Build the solution then run SafeguardSignalrClient.exe. It takes the following parameters: 
 
 - URL - IP address or hostname of target Safeguard Appliance
-- THUMBPRINT - thumbprint of a certificate user
 - EVENT - the event to subscribe to
 
-Additional info
------------
-
-I added, but commented out, GUI authentication. You can uncomment that and use if if you prefer. 
+You will be presented a login window to authenticate with credentials of your choice.
