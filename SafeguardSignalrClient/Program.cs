@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNet.SignalR.Client;
-using Microsoft.AspNet.SignalR.Client.Hubs;
 using OneIdentity.SafeguardDotNet;
-using OneIdentity.SafeguardDotNet.Event;
 using OneIdentity.SafeguardDotNet.GuiLogin;
-using HttpWebRequest = System.Net.HttpWebRequest;
 
 namespace SafeguardSignalrClient
 {
@@ -33,7 +20,7 @@ namespace SafeguardSignalrClient
             string sgEvent = args[1];
 
             //connect to Safeguard and open login prompt window to prompt for creds
-            var connection = LoginWindow.Connect(url);       
+            var connection = LoginWindow.Connect(url);
             
             //create listener and connect to signalr. Assign handler function defined below 
             //to execute when an event is received
